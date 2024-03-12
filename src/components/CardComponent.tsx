@@ -16,14 +16,10 @@ const CardActionsStyled = styled(CardActions)`
   }
   a:hover {
     cursor: pointer;
-    
+
     color: rgb(25, 118, 210);
   }
 `;
-
-
-
-
 
 interface CardProps {
   pokemon: Pokemon;
@@ -54,7 +50,10 @@ export default function CardPokemon(props: CardProps) {
           component="div"
           textAlign="center"
         >
-          <p style={{fontWeight: 'bold'}}>Nome</p>: {props.pokemon.name}
+          <p style={{ fontWeight: "bold", fontFamily: "bangers" }}>Nome:</p>
+          <p style={{marginLeft: "5px", fontWeight: "bold", fontFamily: "bangers" }}>
+            {props.pokemon.name}
+          </p>
         </Typography>
 
         <Typography
@@ -64,7 +63,8 @@ export default function CardPokemon(props: CardProps) {
           component="div"
           textAlign="center"
         >
-          <p style={{fontWeight: 'bold'}}>Tamanho</p>: {props.pokemon.height}
+          <p style={{ fontWeight: "bold", fontFamily: "bangers" }}>Tamanho</p>:
+          <p style={{fontFamily: 'bangers', marginLeft: "5px"}}>{props.pokemon.height}</p>
         </Typography>
       </CardContent>
       <CardActionsStyled>

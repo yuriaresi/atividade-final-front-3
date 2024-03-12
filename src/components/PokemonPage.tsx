@@ -20,7 +20,7 @@ const ContainerStyled = styled(Container)`
 
   #tipo {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
   }
 
   img {
@@ -98,10 +98,50 @@ export const PokemonPage = () => {
         </Typography>
 
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={9} md={7} xl={1}>
+          <Grid  item xs={12} sm={9} md={7} xl={1}>
             <Tabela />
           </Grid>
-          <Grid item xs={12} sm={3} md={5} xl={1}>
+          <Grid id="divImg" item xs={12} sm={3} md={4} xl={1}>
+            <div style={{display: "flex", alignItems: "center"}}>
+              <Switch onChange={trocar} />
+              <p>{shiny ? "Normal" : "Shiny"}</p>
+            </div>
+            <img
+              src={
+                shiny
+                  ? pokemon.sprites.front_default
+                  : pokemon.sprites.front_shiny
+              }
+              alt="pokemon image"
+            />
+          </Grid>
+ 
+          <Grid id="gridHabilidades" item xs={12} sm={3} md={6} xl={1}>
+            <div id="divHabilidades">
+              <Typography
+                style={{ fontSize: "50px", fontFamily: "Bangers" }}
+                gutterBottom
+              >
+                Habilidades
+              </Typography>
+
+              <ul>
+                {pokemon.abilities.map((item, index) => (
+                  <li key={index}>{item.ability.name}</li>
+                ))}
+              </ul>
+            </div>
+            <div id="botaoVoltar">
+              <Button
+                style={{ fontFamily: "Bangers" }}
+                onClick={() => navigate("/")}
+                variant="outlined"
+              >
+                Voltar
+              </Button>
+            </div>
+          </Grid>
+          <Grid item xs={12} sm={3} md={6} xl={1}>
             <Typography
               style={{
                 display: "flex",
@@ -125,46 +165,6 @@ export const PokemonPage = () => {
                   {item.type.name}
                 </Typography>
               ))}
-            </div>
-          </Grid>
-
-          <Grid id="divImg" item xs={12} sm={9} md={7} xl={1}>
-            <div style={{display: "flex", alignItems: "center"}}>
-              <Switch onChange={trocar} />
-              <p>{shiny ? "Normal" : "Shiny"}</p>
-            </div>
-            <img
-              src={
-                shiny
-                  ? pokemon.sprites.front_default
-                  : pokemon.sprites.front_shiny
-              }
-              alt="pokemon image"
-            />
-          </Grid>
-          <Grid id="gridHabilidades" item xs={12} sm={3} md={5} xl={1}>
-            <div id="divHabilidades">
-              <Typography
-                style={{ fontSize: "50px", fontFamily: "Bangers" }}
-                gutterBottom
-              >
-                Habilidades
-              </Typography>
-
-              <ul>
-                {pokemon.abilities.map((item, index) => (
-                  <li key={index}>{item.ability.name}</li>
-                ))}
-              </ul>
-            </div>
-            <div id="botaoVoltar">
-              <Button
-                style={{ fontFamily: "Bangers" }}
-                onClick={() => navigate("/")}
-                variant="outlined"
-              >
-                Voltar
-              </Button>
             </div>
           </Grid>
         </Grid>
